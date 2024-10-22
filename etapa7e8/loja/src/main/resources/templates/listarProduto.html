@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de produtos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+</head>
+<body>
+    <nav class="nav">
+        <a th:href="@{/inserir-produto}">Cadastrar Produtos</a>
+        <a th:href="@{/login}">Sair</a>
+    </nav>
+    <h1>Lista de Produtos</h1>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Codigo</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade Estoque</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="produto : ${produtos}">
+                    <td th:text="${produto.id}"></td>
+                    <td th:text="${produto.codigo}"></td>
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.valor}"></td>
+                    <td th:text="${produto.quantidadeEstoque}"></td>
+                    <td th:text="${produto.data}"></td>
+                    <td>
+                        <a th:href="@{/alterar-produto(id=${produto.id})}">Alterar Info</a>
+                        <a th:href="@{/excluir-produto(id=${produto.id})}">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>  
+    </div>
+</body>
+</html>
