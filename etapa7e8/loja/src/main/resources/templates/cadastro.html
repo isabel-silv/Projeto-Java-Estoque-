@@ -14,14 +14,19 @@
     </nav>
     <div class="form-container">
         <h1>Adicionar Produto</h1>
-        <form th:action="@{/guardar-produto}" method="POST" th:object="${produto}">
-            <p>Codigo: <input type="text" th:field="*{codigo}" /></p>
-            <p>Nome: <input type="text" th:field="*{nome}" /></p>
-            <p>Valor: <input type="text" th:field="*{valor}" /></p>
-            <p>Quantidade Estoque: <input type="text" th:field="*{quantidadeEstoque}" /></p>
-            <p>Data: <input type="date" th:field="*{data}"/></p>
-            <input type="hidden" th:field="*{id}" />
-            <p><input type="submit" value="Cadastrar" /></p>
+        <form th:action="@{/guardar-produto}" method="POST" th:object="${produtos}">
+           <p>Codigo: <input type="text" th:field="*{codigo}" /></p>
+        <span th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></span><br><br>
+        <p>Nome: <input type="text" th:field="*{nome}" /></p>
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span><br><br>
+        <p>Valor: <input type="text" th:field="*{valor}" /></p>
+        <span th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}"></span><br><br>
+        <p>Quantidade Estoque: <input type="text" th:field="*{quantidadeEstoque}" /></p>
+        <span th:if="${#fields.hasErrors('quantidadeEstoque')}" th:errors="*{quantidadeEstoque}"></span><br><br>
+        <p>Data: <input type="date" th:field="*{data}" /></p>
+        <span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span><br><br>
+        <input type="hidden" th:field="*{id}" />
+        <p><input type="submit" value="Cadastrar" /></p>
         </form>
     </div>
    

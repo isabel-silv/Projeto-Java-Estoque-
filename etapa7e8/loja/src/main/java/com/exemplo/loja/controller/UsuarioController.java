@@ -38,7 +38,7 @@ public class UsuarioController {
     public String processLogin(@RequestParam String usuario, @RequestParam String senha, Model model) {
         Usuario user = usuarioService.buscarPorUsuario(usuario);
         if (user != null && user.getSenha().equals(senha)) {
-            return "redirect:/inserir-produto";
+            return "redirect:/cadastro-produto";
         }
         model.addAttribute("error", "Usuário ou senha inválidos");
         return "login";
